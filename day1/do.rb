@@ -10,3 +10,9 @@ count = 10
 count.times {
 	puts my_name
 }
+
+i = 0
+while i < count 
+	puts my_name
+	i = i + 1
+end
