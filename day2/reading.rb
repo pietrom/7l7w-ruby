@@ -16,5 +16,9 @@ puts tours
 puts tours['indurain']
 
 tours.each_key { |key|
-	puts "#{key} won #{tours[key]} tours"
+	puts "#{key.capitalize} won #{tours[key]} tours"
+}
+
+tours.each_pair { |key, value|
+	puts "#{key.capitalize} won #{value} tours"
 }
