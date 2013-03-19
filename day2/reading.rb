@@ -22,3 +22,6 @@ tours.each_key { |key|
 tours.each_pair { |key, value|
 	puts "#{key.capitalize} won #{value} tours"
 }
+
+puts "Using range: "
+puts fruits[1..3]
