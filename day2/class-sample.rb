@@ -1,5 +1,6 @@
 class Person
-	attr_accessor :name, :surname
+	attr :name
+	attr :surname
 
 	def initialize (name, surname)
 		@name = name.capitalize
@@ -7,9 +8,11 @@ class Person
 	end
 
 	def to_string
-		name + ' ' + surname
+		@name + ' ' + @surname
 	end
 end
 
 pietro = Person.new('Pietro', 'martinelli')
 puts pietro.to_string
+puts pietro.name
+puts pietro.surname
