@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'Person'
+require 'day2/Person'
 
 class PersonTest < Test::Unit::TestCase
   def test_to_string
