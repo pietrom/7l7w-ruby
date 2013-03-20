@@ -28,8 +28,10 @@ class ReadingTest < Test::Unit::TestCase
     tours = {'indurain' => 5, 'merckx' => 5, 'armstrong' => 0}
     buffer = ''
     tours.each_pair do |key, value|
-      buffer = buffer + key + ':' + value + ';'
+      buffer = buffer + key + ':' + value.to_s + ';'
     end
-    assert_equal
+    assert(buffer.index('armstrong:0') >= 0)
+    assert(buffer.index('merckx:5') >= 0)
+    assert(buffer.index('indurain:5') >= 0)
   end
 end
