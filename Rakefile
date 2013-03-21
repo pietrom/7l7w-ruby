@@ -7,18 +7,24 @@ def buildpath_file_name
 end
 
 def source_dirs()
-  ['day1', 'day2']
+  ['day1', 'src/main/ruby']
+end
+
+def test_dirs()
+  ['src/test/ruby']
 end
   
 
 task :default => [:test]
 
 task :test do
-  source_dirs.each do |dir|
-    test_cases = Dir.glob(dir + '/*Test.rb')
+  lib = ""
+  source_dirs.each {|sd| lib = lib + sd + ':'}
+  test_dirs.each do |dir|
+    test_cases = Dir.glob(dir + '/**/*Test.rb')
     test_cases.each do |test_case|
       puts "Executing test-case '#{test_case}'"
-      ruby test_case
+      system "ruby -I #{lib}  #{test_case}"
     end
   end
 end
@@ -71,9 +77,14 @@ def create_buildpath_file
   File.open(buildpath_file_name, 'w') do |f|
     f.puts('<?xml version="1.0" encoding="UTF-8"?>')
     f.puts('<buildpath>')
-    source_dirs.each {|d| f.puts("\t<buildpathentry kind=\"src\" path=\"#{d}\" />")}
+    create_src(f, source_dirs)
+    create_src(f, test_dirs)
     f.puts("\t<buildpathentry kind=\"con\" path=\"org.eclipse.dltk.launching.INTERPRETER_CONTAINER\"/>")
     f.puts('</buildpath>')
   end
   puts "File #{buildpath_file_name} created!"
+end
+
+def create_src(file, entries)
+  entries.each {|d| file.puts("\t<buildpathentry kind=\"src\" path=\"#{d}\" />")}
 end

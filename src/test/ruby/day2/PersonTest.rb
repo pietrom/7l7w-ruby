@@ -1,3 +1,6 @@
+puts "Here"
+$LOAD_PATH.each {|l| puts l}
+
 require 'test/unit'
 require 'day2/Person'
 
