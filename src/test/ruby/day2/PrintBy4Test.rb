@@ -2,7 +2,7 @@ require 'test/unit'
 
 class PrintBy4Test < Test::Unit::TestCase
   @@numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-  def test_print_array_of_16_numbers_4_by_4
+  def test_print_array_of_16_numbers_4_by_4_using_each
     buffer = ""
     count = 0
     @@numbers.each do |n|
@@ -13,6 +13,18 @@ class PrintBy4Test < Test::Unit::TestCase
         buffer = buffer + "\n"
         count = 0 
       end
+    end
+    assert_equal("1 2 3 4\n5 6 7 8\n9 10 11 12\n13 14 15 16\n", buffer)
+  end
+  
+  def test_print_array_of_16_numbers_4_by_4_using_each_slice
+    buffer = ""
+    @@numbers.each_slice(4) do |s|
+      puts s.class
+      s.each do |n|
+        buffer = buffer + n.to_s + " "
+      end
+      buffer = buffer.rstrip + "\n"
     end
     assert_equal("1 2 3 4\n5 6 7 8\n9 10 11 12\n13 14 15 16\n", buffer)
   end
