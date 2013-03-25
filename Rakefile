@@ -20,12 +20,19 @@ task :default => [:test]
 task :test do
   lib = ""
   source_dirs.each {|sd| lib = lib + sd + File::PATH_SEPARATOR}
+  result = true
   test_dirs.each do |dir|
     test_cases = Dir.glob(dir + '/**/*Test.rb')
     test_cases.each do |test_case|
       puts "Executing test-case '#{test_case}'"
-      system "ruby -I #{lib}  #{test_case}"
+      ret = system "ruby -I #{lib}  #{test_case}"
+      result = result && ret
     end
+  end
+  puts "+++ BUILD SUCCESSFUL +++" if result
+  if not result
+    puts "--- BUILD ERRORS: There are failing tests ---"
+    exit(1)
   end
 end
 
