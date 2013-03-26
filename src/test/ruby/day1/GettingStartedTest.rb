@@ -22,4 +22,15 @@ class GettingStartedTest < Test::Unit::TestCase
     4.times { buffer = buffer + my_name + ';' }
     assert_equal('Pietro;Pietro;Pietro;Pietro;', buffer)
   end
+  
+  def test_while
+    buffer = ''
+    my_name = 'Pietro'
+    i = 0
+    while i < 4 
+      buffer = buffer + my_name + ';'
+      i = i + 1
+    end
+    assert_equal('Pietro;Pietro;Pietro;Pietro;', buffer)
+  end
 end
