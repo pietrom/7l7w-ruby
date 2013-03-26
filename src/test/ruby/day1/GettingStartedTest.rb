@@ -15,4 +15,11 @@ class GettingStartedTest < Test::Unit::TestCase
     output = "Index of '#{to_search}' in '#{a_string}' is: #{index}"
     assert_equal("Index of 'Ruby' in 'Hello, Ruby!' is: 7", output)
   end
+  
+  def test_int_times
+    buffer = ''
+    my_name = 'Pietro'
+    4.times { buffer = buffer + my_name + ';' }
+    assert_equal('Pietro;Pietro;Pietro;Pietro;', buffer)
+  end
 end
