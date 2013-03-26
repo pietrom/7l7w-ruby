@@ -33,4 +33,12 @@ class GettingStartedTest < Test::Unit::TestCase
     end
     assert_equal('Pietro;Pietro;Pietro;Pietro;', buffer)
   end
+  
+  def test_int_times_with_variables_substitution
+    buffer = ''
+    3.times do |i|
+      buffer = buffer + "Sentence ##{i};"
+    end
+    assert_equal('Sentence #0;Sentence #1;Sentence #2;', buffer)
+  end
 end
