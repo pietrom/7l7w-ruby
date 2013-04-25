@@ -9,7 +9,7 @@ class YieldTest < Test::Unit::TestCase
     @buffer = @buffer + 'AFTER'
   end
   
-  def test_basic_yiels_example
+  def test_basic_yield_example
     @buffer = ''
     caller {
       @buffer = @buffer + 'IN'
